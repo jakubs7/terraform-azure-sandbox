@@ -1,0 +1,4 @@
+// This file contains the variables used in the Terraform configuration.
+
+admin_password = "YourSecurePassword123!"
+subscription_id = "Your Azure Subscription ID"

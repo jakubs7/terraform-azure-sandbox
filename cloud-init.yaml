@@ -1,0 +1,21 @@
+#cloud-config
+package_update: true
+packages:
+  - nginx
+write_files:
+  - path: /var/www/html/index.html
+    permissions: '0644'
+    owner: root:root
+    content: |
+      <html>
+      <head>
+        <title>Welcome to Azure VM</title>
+      </head>
+      <body>
+        <h1>Success! Nginx is installed and running on your Azure VM.</h1>
+      </body>
+      </html>
+runcmd:
+  - "for i in {1..5}; do apt-get update && apt-get install -y nginx && break || sleep 10; done"
+  - systemctl enable nginx
+  - systemctl start nginx
